@@ -21,9 +21,11 @@ function convertMetre(nombre, unite){
   //On veut laisser le choix de la conversion, en fonction de l'unité départ on choisi l'unité d'arrivée.
   //On renvoie une string qui contient nombre et unité.
   if(unite ==='m'){
-    return toString(division(nombre, 1000).egal)+"km";
+    var result = division(nombre, 1000).egal.toString();+"km";
+    return result+"km";
   }else{
-    return toString(multipli(nombre, 1000))+"m";
+    var result = multipli(nombre, 1000).toString();
+    return result+"m";
   }
 }
 
@@ -70,7 +72,7 @@ function menu(objet){
     var nombre = prompt('Quelle valeur convertir ?');
     var operateur = prompt("Est elle en m ou en km ?");
 
-    afficheur.innerHTML = nombre+operateur+' est égal à '+convertMetre(Number(nombre), Number(operateur));
+    afficheur.innerHTML = nombre+operateur+' est égal à '+convertMetre(Number(nombre), operateur);
   }else if (objet === buttons.tord){
     var pointure = prompt('Quel est votre pointure ?');
     var annee = prompt("Quelle est votre année de naissance ?");
@@ -101,7 +103,7 @@ for(var nom in buttons){
       //On réinitialise la couleur de l'afficheur par défaut à chaque clique.
       afficheur.style.color = 'black';
       afficheur.style.fontWeight = 'normal';
-      //Quand on clic, on appelle la fonction menu et on lui envoie l'objet qui a déclenché l'évènement. 
+      //Quand on clic, on appelle la fonction menu et on lui envoie l'objet qui a déclenché l'évènement.
       menu(this);
     });
 }
